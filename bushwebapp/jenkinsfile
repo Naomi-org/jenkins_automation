@@ -24,7 +24,7 @@ pipeline{
       steps{
         sh "echo 'cloning the latest application version' "
       //  git credentialsId: 'GithubCred', url: 'https://github.com/JoetechDev/jowebapp.git' //Use your own github account link
-       git branch: 'main', credentialsId: 'githubCred', url: 'https://github.com/Naomi-org/jenkins_automation.git'
+       git branch: 'main', credentialsId: 'githubargo', url: 'https://github.com/Naomi-org/jenkins_automation.git'
     //  git 'https://github.com/JoetechDev/jowebapp'
       }
     }
