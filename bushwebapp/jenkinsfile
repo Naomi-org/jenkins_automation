@@ -51,7 +51,7 @@ pipeline{
       steps{
 
       script {
-        dockerImage = docker.build registry + ":$BUILD_NUMBER", --file ./bushwebapp/dockerfile //use build number as image tag 
+        dockerImage = docker.build registry + ":$BUILD_NUMBER", --file ./bushwebapp/Dockerfile //use build number as image tag 
         //$BUILD_NUMBER variable is used as tag for docker image 
       }   
       sh "echo 'Building Docker Image' "
