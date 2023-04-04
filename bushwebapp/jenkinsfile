@@ -56,7 +56,7 @@ pipeline{
         //$BUILD_NUMBER variable is used as tag for docker image 
       }   
       sh "echo 'Building Docker Image' "
-      sh "${dockerPath} build -t ${registry}:$BUILD_NUMBER ."
+      sh  "${dockerpath} build -t ${dockerImage} ."
        
       }
     }
