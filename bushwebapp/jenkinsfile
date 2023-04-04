@@ -13,7 +13,7 @@ pipeline{
   environment {
     registry = "tekangbushh/spring-boot-mongo-ja"//Replace with your registry 
     registryCredential = 'dockerhubcred' //Credential name in Jenkins for Dockerhub
-    docker = 'docker'
+    dockerpath = '/jenkins/bin/docker'
     dockerImage = ''
   }
   agent any 
@@ -56,6 +56,7 @@ pipeline{
         //$BUILD_NUMBER variable is used as tag for docker image 
       }   
       sh "echo 'Building Docker Image' "
+      sh "${dockerPath} build -t ${registry}:$BUILD_NUMBER ."
        
       }
     }
