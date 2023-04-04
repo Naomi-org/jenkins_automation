@@ -63,7 +63,7 @@ pipeline{
     stage('6buildImage'){
     
     steps{
-      sh "sh docker build -t tekangbushh/spring-boot-mongo-ja:$BUILD_NUMBER  ./bushwebapp"
+      sh "sh docker build -t tekangbushh/spring-boot-mongo-ja:$BUILD_NUMBER  ./bushwebapp/Dockerfile"
        
           }
     
