@@ -47,17 +47,26 @@ pipeline{
 //       }
 //     } 
 
- stage('6BuildImage'){
-      steps{
+// stage('6BuildImage'){
+//      steps{
 
-      script {
-        dockerImage = docker.build registry + ":$BUILD_NUMBER" //use build number as image tag 
+//      script {
+  //      dockerImage = docker.build registry + ":$BUILD_NUMBER" //use build number as image tag 
         //$BUILD_NUMBER variable is used as tag for docker image 
       }   
-      sh "echo 'Building Docker Image' "
+    //  sh "echo 'Building Docker Image' "
      
        
       }
+    }
+    
+    stage('6buildImage'){
+    
+    steps{
+      sh "sh docker build -t tekangbushh/spring-boot-mongo-ja:$BUILD_NUMBER -f ./bushwebapp/Dockerfile"
+       
+          }
+    
     }
      stage('7PushImage'){
       steps{
