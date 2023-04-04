@@ -32,7 +32,7 @@ pipeline{
       steps{
         sh "echo 'running JUnit-test-cases' "
         sh "echo 'testing must passed to create artifacts ' "
-        sh 'mvn clean package'
+        sh 'mvn -f ./bushwebapp/pom.xml clean package'
       }
     }
 //   stage('4CodeQuality'){
