@@ -13,6 +13,7 @@ pipeline{
   environment {
     registry = "tekangbushh/spring-boot-mongo-ja"//Replace with your registry 
     registryCredential = 'dockerhubcred' //Credential name in Jenkins for Dockerhub
+    docker = 'docker'
     dockerImage = ''
   }
   agent any 
