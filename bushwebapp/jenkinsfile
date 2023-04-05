@@ -70,15 +70,15 @@ pipeline{
 //        sh "echo 'Pushed  Docker Image'"
 //       }
 //    }
-//  stage('8Updating Manifest') {
-//        steps {
-//          script {
-//          echo "triggering updatemanifestjob"
-//                 build job: 'manifestupd', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)] 
-//                 // "manifestupd" name of second jenkins job that is triggered , second Job is parameterized and env.BUILD_NUMBER is inputed as parameter  DOCKERTAG  
-//          }
-//        }
-//      }
+    stage('8Updating Manifest') {
+          steps {
+            script {
+            echo "triggering updatemanifestjob"
+                  build job: 'manifestupd', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)] 
+                   // "manifestupd" name of second jenkins job that is triggered , second Job is parameterized and env.BUILD_NUMBER is inputed as parameter  DOCKERTAG  
+            }
+         }
+        }
 
   }
 }
