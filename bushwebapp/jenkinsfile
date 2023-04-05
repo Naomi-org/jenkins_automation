@@ -95,6 +95,6 @@ stage('6buildImage&PushImage'){
 //      }
 
   }
-}
+
 
   
