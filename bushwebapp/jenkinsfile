@@ -60,25 +60,27 @@ pipeline{
 //      }
 //    }
     
-    stage('6buildImage'){
+    stage('6buildImage&PushImage'){
     
     steps{
       sh " docker build -t tekangbushh/spring-boot-mongo-ja:$BUILD_NUMBER  ./bushwebapp"
+      sh " docker push tekangbushh/spring-boot-mongo-ja:$BUILD_NUMBER"
+      
        
           }
     
     }
-    stage('7PushImage'){
-      steps{
-     script {
-      docker.withRegistry( registry, registryCredential )
-      {
-        dockerImage.push()
-       }  
-      }  
-        sh "echo 'Pushed  Docker Image'"
-       }
-    }
+   // stage('7PushImage'){
+   //   steps{
+   //  script {
+   //   docker.withRegistry( registry, registryCredential )
+   //   {
+   //     dockerImage.push()
+   //    }  
+   //   }  
+   //     sh "echo 'Pushed  Docker Image'"
+   //    }
+  //  }
 //  stage('8Updating Manifest') {
 //        steps {
 //          script {
