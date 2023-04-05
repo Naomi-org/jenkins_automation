@@ -59,8 +59,8 @@ pipeline{
       sh "echo 'the edited step has now worked' "
      
        
-//      }
-//    }
+     }
+    }
     
 /*   
 stage('6buildImage&PushImage'){
