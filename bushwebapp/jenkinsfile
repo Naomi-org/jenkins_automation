@@ -1,4 +1,5 @@
-// Prequisites
+
+  // Prequisites
 // A server with Jenkins and Docker running on it (Jenkins user should be allowed to run Docker).
 // Github account.
 // Docker hub account.
@@ -11,14 +12,13 @@
 
 pipeline{
   environment {
-    registry = "tekangbushh/spring-boot-mongo-ja"//Replace with your registry 
+    registry = "tekangbushh/spring-boot-mongo-ja" //Replace with your registry 
     registryCredential = 'dockerhubcred' //Credential name in Jenkins for Dockerhub
-     dockerImage = ''
+    dockerImage = ''
   }
   agent any 
   tools {
-    maven "maven3.6.2" //Pick Maven Version
- 
+    maven "maven3.8.6" //Pick Maven Version
   }  
   stages {
     stage('1GetCode'){
@@ -28,7 +28,6 @@ pipeline{
        git branch: 'main', credentialsId: 'githubargo', url: 'https://github.com/Naomi-org/jenkins_automation.git'
     //  git 'https://github.com/JoetechDev/jowebapp'
       }
-    }
     }
     stage('3Test+Build'){
       steps{
@@ -49,37 +48,28 @@ pipeline{
 //       }
 //     } 
 
+ stage('6BuildImage&pushing'){
+      steps{
 
-// stage('6BuildImage'){
-//     steps{
-//      script {
-//      dockerImage = docker.build registry + ":$BUILD_NUMBER" //use build number as image tag 
-//        //$BUILD_NUMBER variable is used as tag for docker image 
-//        }   
-//      sh "echo 'Building Docker Image' "
-//      sh "echo 'the edited step has now worked' "
-//   }
-//  }
- 
-stage('6buildImage&PushImage'){
-    
-    steps{
+  
       sh " docker build -t tekangbushh/spring-boot-mongo-ja:$BUILD_NUMBER  ./bushwebapp"
+      sh "echo 'Building Docker Image' "
       sh " docker push tekangbushh/spring-boot-mongo-ja:$BUILD_NUMBER"
+      sh " docker image has been pushe successfully "
+       
       }
     }
-    
- //   stage('7PushImage'){
- //     steps{
- //    script {
- //     docker.withRegistry( registry, registryCredential )
- //     {
-  //      dockerImage.push()
-   //    }  
-   //   }  
-    //   sh "echo 'Pushed  Docker Image'"
-    //  }
-   //  }
+//     stage('7PushImage'){
+//      steps{
+//      script {
+//        docker.withRegistry( '', registryCredential )
+//        {
+//        dockerImage.push()
+//       }  
+//      }  
+//        sh "echo 'Pushed  Docker Image'"
+//       }
+//    }
 //  stage('8Updating Manifest') {
 //        steps {
 //          script {
@@ -91,6 +81,4 @@ stage('6buildImage&PushImage'){
 //      }
 
   }
-
-
-  
+}
