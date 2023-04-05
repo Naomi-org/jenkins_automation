@@ -68,17 +68,17 @@ pipeline{
           }
     
     }
-  //   stage('7PushImage'){
-//      steps{
- //    script {
- //     docker.withRegistry( registry, registryCredential )
- //     {
- //       dockerImage.push()
- //      }  
- //     }  
- //       sh "echo 'Pushed  Docker Image'"
- //      }
- //   }
+    stage('7PushImage'){
+      steps{
+     script {
+      docker.withRegistry( registry, registryCredential )
+      {
+        dockerImage.push()
+       }  
+      }  
+        sh "echo 'Pushed  Docker Image'"
+       }
+    }
 //  stage('8Updating Manifest') {
 //        steps {
 //          script {
