@@ -50,7 +50,7 @@ pipeline{
 
  stage('6BuildImage'){
       steps{
-
+/*
       script {
       dockerImage = docker.build registry + ":$BUILD_NUMBER" //use build number as image tag 
         //$BUILD_NUMBER variable is used as tag for docker image 
@@ -61,8 +61,7 @@ pipeline{
        
      }
     }
-    
-/*   
+  */  
 stage('6buildImage&PushImage'){
     
     steps{
@@ -74,7 +73,6 @@ stage('6buildImage&PushImage'){
     
     }
     
-  */
  //   stage('7PushImage'){
  //     steps{
  //    script {
