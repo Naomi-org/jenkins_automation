@@ -29,6 +29,7 @@ pipeline{
     //  git 'https://github.com/JoetechDev/jowebapp'
       }
     }
+    }
     stage('3Test+Build'){
       steps{
         sh "echo 'running JUnit-test-cases' "
